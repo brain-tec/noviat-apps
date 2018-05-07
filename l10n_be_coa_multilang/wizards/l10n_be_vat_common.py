@@ -215,6 +215,9 @@ class l10nBeVatCommon(models.AbstractModel):
             raise UserError(_(
                 "No 'phone' for %s")
                 % self.declarant_id.name)
+        phone = phone.replace('+', '00').replace(' ', '')
+        no_break_space = u'\u00A0'
+        phone = phone.replace(no_break_space, '')
 
         declarant_data = {
             'email': email,
